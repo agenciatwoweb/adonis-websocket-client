@@ -610,7 +610,7 @@ export default class Connection extends Emitter {
    * @return {void}
    */
   write (payload) {
-    if (this.ws.readyState !== WebSocket.OPEN) {
+    if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
       if (process.env.NODE_ENV !== 'production') {
         debug('connection is not in open state, current state %s', this.ws.readyState)
       }
