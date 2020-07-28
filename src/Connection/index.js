@@ -125,7 +125,7 @@ export default class Connection extends Emitter {
    *
    */
   get defaultUrl() {
-    const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const wsProtocol = (typeof window !== 'undefined' && window.location.protocol === 'https:') ? 'wss' : 'ws'
     return `${wsProtocol}://${window.location.host}`
   }
 
